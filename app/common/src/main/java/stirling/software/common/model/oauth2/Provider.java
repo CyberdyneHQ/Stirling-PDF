@@ -78,34 +78,35 @@ public class Provider {
 
     private UsernameAttribute validateKeycloakUsernameAttribute(
             UsernameAttribute usernameAttribute) {
-        switch (usernameAttribute) {
-            case EMAIL, NAME, GIVEN_NAME, FAMILY_NAME, PREFERRED_USERNAME -> {
-                return usernameAttribute;
-            }
-            default ->
-                    throw new UnsupportedClaimException(
-                            String.format(EXCEPTION_MESSAGE, usernameAttribute, clientName));
+        if (usernameAttribute == UsernameAttribute.EMAIL
+            || usernameAttribute == UsernameAttribute.NAME
+            || usernameAttribute == UsernameAttribute.GIVEN_NAME
+            || usernameAttribute == UsernameAttribute.FAMILY_NAME
+            || usernameAttribute == UsernameAttribute.PREFERRED_USERNAME) {
+            return usernameAttribute;
+        } else {
+            throw new UnsupportedClaimException(
+                String.format(EXCEPTION_MESSAGE, usernameAttribute, clientName));
         }
-    }
-
     private UsernameAttribute validateGoogleUsernameAttribute(UsernameAttribute usernameAttribute) {
-        switch (usernameAttribute) {
-            case EMAIL, NAME, GIVEN_NAME, FAMILY_NAME -> {
-                return usernameAttribute;
-            }
-            default ->
-                    throw new UnsupportedClaimException(
-                            String.format(EXCEPTION_MESSAGE, usernameAttribute, clientName));
+        if (usernameAttribute == EMAIL
+                || usernameAttribute == NAME
+                || usernameAttribute == GIVEN_NAME
+                || usernameAttribute == FAMILY_NAME) {
+            return usernameAttribute;
+        } else {
+            throw new UnsupportedClaimException(
+                    String.format(EXCEPTION_MESSAGE, usernameAttribute, clientName));
         }
     }
-
     private UsernameAttribute validateGitHubUsernameAttribute(UsernameAttribute usernameAttribute) {
-        switch (usernameAttribute) {
-            case LOGIN, EMAIL, NAME -> {
-                return usernameAttribute;
-            }
-            default ->
-                    throw new UnsupportedClaimException(
+        if (usernameAttribute == LOGIN || usernameAttribute == EMAIL || usernameAttribute == NAME) {
+            return usernameAttribute;
+        } else {
+            throw new UnsupportedClaimException(
+                    String.format(EXCEPTION_MESSAGE, usernameAttribute, clientName));
+        }
+    }
                             String.format(EXCEPTION_MESSAGE, usernameAttribute, clientName));
         }
     }
