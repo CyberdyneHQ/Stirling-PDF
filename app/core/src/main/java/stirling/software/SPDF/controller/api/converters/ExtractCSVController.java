@@ -130,5 +130,4 @@ public class ExtractCSVController {
         return filename.replaceFirst("[.][^.]+$", "");
     }
 
-    private record CsvEntry(String filename, String content) {}
 }
