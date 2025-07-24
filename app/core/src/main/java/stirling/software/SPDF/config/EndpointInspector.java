@@ -200,13 +200,4 @@ public class EndpointInspector implements ApplicationListener<ContextRefreshedEv
         return new HashSet<>(validGetEndpoints);
     }
 
-    private void logAllEndpoints() {
-        Set<String> sortedEndpoints = new TreeSet<>(validGetEndpoints);
-
-        logger.info("=== BEGIN: All discovered GET endpoints ===");
-        for (String endpoint : sortedEndpoints) {
-            logger.info("Endpoint: {}", endpoint);
-        }
-        logger.info("=== END: All discovered GET endpoints ===");
-    }
 }

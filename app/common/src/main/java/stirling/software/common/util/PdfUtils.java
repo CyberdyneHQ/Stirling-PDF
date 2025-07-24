@@ -603,8 +603,6 @@ public class PdfUtils {
     }
 
     /** Key for storing the dimensions of a rendered image in a map. */
-    private record PdfRenderSettingsKey(float mediaBoxWidth, float mediaBoxHeight, int rotation) {}
 
     /** Value for storing the dimensions of a rendered image in a map. */
-    private record PdfImageDimensionValue(int width, int height) {}
 }
