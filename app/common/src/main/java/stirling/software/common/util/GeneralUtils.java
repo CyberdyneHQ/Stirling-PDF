@@ -418,8 +418,8 @@ public class GeneralUtils {
                     NetworkInterface net = networks.nextElement();
                     byte[] mac = net.getHardwareAddress();
                     if (mac != null) {
-                        for (int i = 0; i < mac.length; i++) {
-                            sb.append(String.format("%02X", mac[i]));
+                        for (byte b : mac) {
+                            sb.append(String.format("%02X", b));
                         }
                         break; // Use the first network interface with a MAC address
                     }
@@ -427,8 +427,8 @@ public class GeneralUtils {
             } else {
                 byte[] mac = network.getHardwareAddress();
                 if (mac != null) {
-                    for (int i = 0; i < mac.length; i++) {
-                        sb.append(String.format("%02X", mac[i]));
+                    for (byte b : mac) {
+                        sb.append(String.format("%02X", b));
                     }
                 }
             }

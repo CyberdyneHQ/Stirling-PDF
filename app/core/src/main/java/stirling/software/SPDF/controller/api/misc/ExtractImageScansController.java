@@ -114,7 +114,7 @@ public class ExtractImageScansController {
             List<byte[]> processedImageBytes = new ArrayList<>();
 
             // Process each image
-            for (int i = 0; i < images.size(); i++) {
+            for (String image : images) {
 
                 Path tempDir = Files.createTempDirectory("openCV_output");
                 tempDirs.add(tempDir);
@@ -123,7 +123,7 @@ public class ExtractImageScansController {
                                 Arrays.asList(
                                         pythonVersion,
                                         splitPhotosScript.toAbsolutePath().toString(),
-                                        images.get(i),
+                                        image,
                                         tempDir.toString(),
                                         "--angle_threshold",
                                         String.valueOf(request.getAngleThreshold()),

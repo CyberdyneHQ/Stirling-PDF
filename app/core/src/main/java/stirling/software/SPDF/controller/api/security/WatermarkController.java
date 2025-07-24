@@ -221,8 +221,8 @@ public class WatermarkController {
         String[] textLines = watermarkText.split("\\\\n");
         float maxLineWidth = 0;
 
-        for (int i = 0; i < textLines.length; ++i) {
-            maxLineWidth = Math.max(maxLineWidth, font.getStringWidth(textLines[i]));
+        for (String line : textLines) {
+            maxLineWidth = Math.max(maxLineWidth, font.getStringWidth(line));
         }
 
         // Set size and location of text watermark
@@ -232,6 +232,7 @@ public class WatermarkController {
         float pageHeight = page.getMediaBox().getHeight();
 
         // Calculating the new width and height depending on the angle.
+
         float radians = (float) Math.toRadians(rotation);
         float newWatermarkWidth =
                 (float)
@@ -257,8 +258,8 @@ public class WatermarkController {
                                 j * newWatermarkWidth,
                                 i * newWatermarkHeight));
 
-                for (int k = 0; k < textLines.length; ++k) {
-                    contentStream.showText(textLines[k]);
+                for (String line : textLines) {
+                    contentStream.showText(line);
                     contentStream.newLineAtOffset(0, -fontSize);
                 }
 

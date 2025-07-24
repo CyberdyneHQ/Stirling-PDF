@@ -269,8 +269,8 @@ public class RearrangePagesPDFController {
             log.info("totalPages = " + totalPages);
             // Create a new list to hold the pages in the new order
             List<PDPage> newPages = new ArrayList<>();
-            for (int i = 0; i < newPageOrder.size(); i++) {
-                newPages.add(document.getPage(newPageOrder.get(i)));
+            for (Integer pageNumber : newPageOrder) {
+                newPages.add(document.getPage(pageNumber));
             }
 
             // Remove all the pages from the original document
