@@ -245,7 +245,7 @@ public class DesktopBrowser implements WebBrowser {
         client.addLoadHandler(
                 new CefLoadHandlerAdapter() {
                     @Override
-                    public void onLoadingStateChange(
+                    public synchronized void onLoadingStateChange(
                             CefBrowser browser,
                             boolean isLoading,
                             boolean canGoBack,
@@ -432,7 +432,7 @@ public class DesktopBrowser implements WebBrowser {
         if (loadingWindow != null) loadingWindow.dispose();
     }
 
-    public static void forceInitializeUI() {
+    public static synchronized void forceInitializeUI() {
         try {
             if (loadingWindow != null) {
                 log.info("Forcing start of UI initialization sequence");
